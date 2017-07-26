@@ -151,7 +151,7 @@ export default {
         props: {
           toast: toast
         },
-        key: toast
+        key: toast.toastId
       })))
     )
   }

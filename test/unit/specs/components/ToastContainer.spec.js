@@ -13,7 +13,8 @@ describe('ToastContainer.vue', () => {
       'type': 'success',
       title: 'test',
       body: 'test body',
-      toastConfig: new ToastConfig()
+      toastConfig: new ToastConfig(),
+      toastId: 1
     }
   })
 
@@ -71,7 +72,8 @@ describe('ToastContainer.Vue addToast', () => {
       'type': 'success',
       title: 'test',
       body: 'test body',
-      toastConfig: new ToastConfig()
+      toastConfig: new ToastConfig(),
+      toastId: 1
     }
   })
 
@@ -203,7 +205,7 @@ describe('ToastContainer.Vue addToast', () => {
     }).end(done)
   })
 
-  it('should unshit and pop if newestOnTop and limit is exceeded', done => {
+  it('should unshift and pop if newestOnTop and limit is exceeded', done => {
     Vue.use(Install)
 
     const Constructor = Vue.extend(ToastContainer)
@@ -310,10 +312,10 @@ describe('ToastContainer.Vue addToast', () => {
       }
     }).$mount()
 
-    let _successToast = { type: 'success' }
+    let _successToast = { type: 'success', toastId: 1 }
     vm.addToast(_successToast, vm._toastConfig)
 
-    let _errorToast = { type: 'error' }
+    let _errorToast = { type: 'error', toastId: 2 }
 
     vm.addToast(_errorToast, vm._toastConfig)
 
@@ -342,10 +344,10 @@ describe('ToastContainer.Vue addToast', () => {
       }
     }).$mount()
 
-    let _successToast = { type: 'success' }
+    let _successToast = { type: 'success', toastId: 1 }
     vm.addToast(_successToast, vm._toastConfig)
 
-    let _errorToast = { type: 'error' }
+    let _errorToast = { type: 'error', toastId: 2 }
 
     vm.addToast(_errorToast, vm._toastConfig)
 
@@ -374,10 +376,10 @@ describe('ToastContainer.Vue addToast', () => {
       }
     }).$mount()
 
-    let _successToast = { type: 'success' }
+    let _successToast = { type: 'success', toastId: 1 }
     vm.addToast(_successToast, vm._toastConfig)
 
-    let _errorToast = { type: 'error' }
+    let _errorToast = { type: 'error', toastId: 2 }
 
     vm.addToast(_errorToast, vm._toastConfig)
 
@@ -406,10 +408,10 @@ describe('ToastContainer.Vue addToast', () => {
       }
     }).$mount()
 
-    let _successToast = { type: 'success' }
+    let _successToast = { type: 'success', toastId: 1 }
     vm.addToast(_successToast, vm._toastConfig)
 
-    let _errorToast = { type: 'error' }
+    let _errorToast = { type: 'error', toastId: 2 }
 
     vm.addToast(_errorToast, vm._toastConfig)
 
@@ -433,7 +435,8 @@ describe('ToastContainer.Vue removeToast', () => {
       'type': 'success',
       title: 'test',
       body: 'test body',
-      toastConfig: new ToastConfig()
+      toastConfig: new ToastConfig(),
+      toastId: 1
     }
   })
 
@@ -511,8 +514,8 @@ describe('ToastContainer.Vue removeToasts', () => {
       propsData: { toastConfig: { toastContainerId: 2 } }
     }).$mount()
 
-    let successToast = { type: 'success', body: 'success test' }
-    let errorToast = { type: 'error', body: 'error test' }
+    let successToast = { type: 'success', body: 'success test', toastId: 1 }
+    let errorToast = { type: 'error', body: 'error test', toastId: 2 }
 
     // add the container's config, as if invoked from
     // the ADD_TOAST subscription
@@ -577,8 +580,8 @@ describe('ToastContainer.Vue removeToasts', () => {
       propsData: { toastConfig: { toastContainerId: 2 } }
     }).$mount()
 
-    let successToast = { type: 'success', body: 'success test' }
-    let errorToast = { type: 'error', body: 'error test' }
+    let successToast = { type: 'success', body: 'success test', toastId: 1 }
+    let errorToast = { type: 'error', body: 'error test', toastId: 2 }
 
     // add the container's config, as if invoked from
     // the ADD_TOAST subscription
