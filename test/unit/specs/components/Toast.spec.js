@@ -5,11 +5,11 @@ import ToastConfig from '@/utils/toastConfig'
 
 describe('Toast.vue', () => {
   it('should create component if toast prop exists', () => {
-     Vue.use(Install)
+    Vue.use(Install)
 
     const Constructor = Vue.extend(Toast)
     const vm = new Constructor({
-      propsData: { toast: { toastConfig: new ToastConfig } }
+      propsData: { toast: { toastConfig: new ToastConfig() } }
     }).$mount()
 
     expect(vm).to.not.be.null
@@ -18,11 +18,11 @@ describe('Toast.vue', () => {
 
 describe('Toast.vue onClick', () => {
   it('should trigger handler', () => {
-     Vue.use(Install)
+    Vue.use(Install)
 
     const Constructor = Vue.extend(Toast)
     const vm = new Constructor({
-      propsData: { toast: { toastConfig: new ToastConfig } }
+      propsData: { toast: { toastConfig: new ToastConfig() } }
     }).$mount()
 
     vm.$el.click()

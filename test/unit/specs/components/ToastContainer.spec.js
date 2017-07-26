@@ -496,7 +496,6 @@ describe('ToastContainer.Vue removeToast', () => {
       expect(vm.toasts.length).to.equal(0)
     }).end(done)
   })
-
 })
 
 describe('ToastContainer.Vue removeToasts', () => {
