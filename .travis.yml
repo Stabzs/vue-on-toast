@@ -13,4 +13,4 @@ install:
 script:
   - npm run unit
 after_script:
-  - "cat ./coverage/lcov-report/lcov | ./node_modules/coveralls/bin/coveralls.js"
+  - "cat ./test/unit/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
