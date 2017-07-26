@@ -27,6 +27,7 @@ export default function(toastConfig) {
     timeout: 0,
     titleClass: Constants.TITLE_CLASS,
     toastContainerId: null,
+    showCloseButton: false,
     animation: Constants.animations.FADE
   }
 

@@ -27,6 +27,10 @@ window.waitForUpdate = initialCb => {
         const done = queue[queue.length - 1]
         if (done && done.fail) {
           done.fail(e)
+        } else if (done) {
+          done(e) // Mocha behaviour
+        } else {
+          console.log(e)
         }
       }
       if (!hasError && !job.wait) {

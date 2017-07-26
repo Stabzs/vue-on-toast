@@ -1,0 +1,16 @@
+sudo: required
+dist: trusty
+
+language: node_js
+node_js:
+  - "6"
+before_install:
+  - export CHROME_BIN=chromium-browser
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+install: 
+  - npm install
+script:
+  - npm run unit
+after_script:
+  - "cat ./test/unit/coverage/lcov-report/lcov | ./node_modules/coveralls/bin/coveralls.js"

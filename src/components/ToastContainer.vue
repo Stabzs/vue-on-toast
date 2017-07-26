@@ -102,7 +102,7 @@ export default {
     removeToasts(toastId, toastContainerId) {
       if (toastContainerId === null ||
         typeof toastContainerId === 'undefined' ||
-        toastContainerId === this.toasterconfig.toastContainerId) {
+        toastContainerId === this._toastConfig.toastContainerId) {
         if (toastId) {
           this.removeToast(this.toasts.filter(t => t.toastId === toastId)[0])
         } else {

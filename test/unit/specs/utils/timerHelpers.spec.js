@@ -102,10 +102,8 @@ describe('timerHelpers.js', () => {
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
 
-    window.waitForUpdate(() => {})
-      .end(() => {
-        expect(toast.timeoutId)
-        done()
-      })
+    window.waitForUpdate(() => {
+      expect(toast.timeoutId)
+    }).end(done)
   })
 })
