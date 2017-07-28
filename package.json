@@ -1,6 +1,6 @@
 {
   "name": "vue-on-toast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A powerful, compact, Server Side Rendering supported Toast Notification component for Vue 2",
   "main": "index.js",
   "scripts": {

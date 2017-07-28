@@ -9,9 +9,9 @@ const stylus = require('rollup-plugin-stylus')
 
 module.exports = {
   entry: 'src/index.js',
-  dest: 'dist/vue2-toaster.js',
+  dest: 'dist/vue-on-toast.js',
   format: 'umd',
-  moduleName: 'Vue2Toaster',
+  moduleName: 'VueOnToast',
   plugins: [
     replace({'process.env.NODE_ENV': '"development"'}), 
     flow(), 
@@ -19,11 +19,7 @@ module.exports = {
     cjs(),
     vue({compileTemplate: true}),
     stylus({
-      output: 'toaster.css'
-    }),
-    // babel({
-    //   exclude: ['examples/**', 'dist/**', 'node_modules/**'],
-    // }),
-    //buble()
+      output: 'toast.css'
+    })
   ]
 }
