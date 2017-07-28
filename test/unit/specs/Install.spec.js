@@ -10,5 +10,7 @@ describe('Install.js', () => {
 
     expect(Vue.options.components.ToastContainer).to.be.defined
     expect(Object.keys(Vue.options.components).length).to.equal(4)
+
+    install.install(Vue)
   })
 })

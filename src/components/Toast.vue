@@ -10,7 +10,7 @@
         <div v-else>{{toast.body}}</div>
       </div>
     </div>
-    <div class=" toast-close-button" v-if="toast.showCloseButton" v-on:click="onClick(toast, $event, true)"
+    <div class="toast-close-button" v-if="toast.showCloseButton" v-on:click="onClick(toast, $event, true)"
       v-html="toast.toastConfig.closeHtml">
     </div>
   </div>

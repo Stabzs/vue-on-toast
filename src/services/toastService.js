@@ -20,9 +20,7 @@ export default {
       body: body
     } : type
 
-    toast.toastId = Guid.newGuid()
-
-    if (!toast.type || !toast.type.length) {
+    if (!toast || !toast.type || !toast.type.length) {
       throw new Error('A toast type must be provided')
     }
 
@@ -30,6 +28,8 @@ export default {
       throw new Error(
         'No Toaster Containers have been initialized to receive toasts.')
     }
+
+    toast.toastId = Guid.newGuid()
 
     ToastServiceBus.$emit(Constants.ADD_TOAST, toast)
 

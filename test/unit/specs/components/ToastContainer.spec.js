@@ -18,6 +18,8 @@ describe('ToastContainer.vue', () => {
     }
   })
 
+  afterEach(() => { ToastServiceBus.subscribers = [] })
+
   it('should create instance', () => {
     Vue.use(Install)
 
@@ -76,6 +78,8 @@ describe('ToastContainer.Vue addToast', () => {
       toastId: 1
     }
   })
+
+  afterEach(() => { ToastServiceBus.subscribers = [] })
 
   it('should add toast', done => {
     Vue.use(Install)
@@ -440,6 +444,8 @@ describe('ToastContainer.Vue removeToast', () => {
     }
   })
 
+  afterEach(() => { ToastServiceBus.subscribers = [] })
+
   it('should not remove toast if toastId index < 0', done => {
     Vue.use(Install)
 
@@ -502,6 +508,8 @@ describe('ToastContainer.Vue removeToast', () => {
 })
 
 describe('ToastContainer.Vue removeToasts', () => {
+  afterEach(() => { ToastServiceBus.subscribers = [] })
+
   it('should only remove toasts from the target toastContainerId if toastContainerId is defined', done => {
     Vue.use(Install)
 
