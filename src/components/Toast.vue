@@ -5,9 +5,9 @@
     <div class="toast-content">
       <div v-bind:class="classes.titleClass">{{toast.title}}</div>
       <div v-bind:class="classes.messageClass">
-        <div v-if="toast.bodyOutputType == 'bodyOutputType.Component'" #componentBody></div>
-        <div v-else-if="toast.bodyOutputType == 'bodyOutputType.TrustedHtml'" v-html="toast.body"></div>
-        <div v-else>{{toast.body}}</div>
+        <component v-if="toast.bodyOutputType == bodyOutputType.Component" :is="toast.body"></component>
+        <div v-else-if="toast.bodyOutputType == bodyOutputType.TrustedHtml" v-html="toast.body"></div>
+        <div v-else-if="typeof toast.body === 'string'">{{toast.body}}</div>
       </div>
     </div>
     <div class="toast-close-button" v-if="toast.showCloseButton" v-on:click="onClick(toast, $event, true)"
@@ -19,8 +19,9 @@
 
 <script>
 import Constants from '../utils/constants'
+import BodyOutputType from '../utils/bodyOutputType'
 import { ToastServiceBus } from '../services/toastServiceBus'
-import TimerHelpers from '../utils/timerHelpers'
+import Timer from '../utils/timer'
 
 export default {
   name: 'toast',
@@ -35,6 +36,9 @@ export default {
         titleClass: this.toast.toastConfig.titleClass,
         messageClass: this.toast.toastConfig.messageClass
       }
+    },
+    bodyOutputType() {
+      return BodyOutputType
     }
   },
 
@@ -73,12 +77,12 @@ export default {
     restartTimer: (toast) => {
       if (toast.toastConfig.mouseoverTimerStop) {
         if (!toast.timeoutId) {
-          TimerHelpers.configureTimer(toast)
+          Timer.configureTimer(toast)
         }
       } else if (toast.timeoutId === null) {
         ToastServiceBus.$emit(Constants.REMOVE_TOAST,
           toast.toastId,
-          toast.toastContainerId,
+          toast.toastContainerId
         )
       }
     }

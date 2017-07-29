@@ -3,6 +3,7 @@ import Install from '@/index'
 import Toast from '@/components/Toast'
 import Constants from '@/utils/constants'
 import ToastConfig from '@/utils/toastConfig'
+import BodyOutputType from '@/utils/bodyOutputType'
 import { ToastServiceBus } from '@/services/toastServiceBus'
 
 describe('Toast.vue', () => {
@@ -15,6 +16,96 @@ describe('Toast.vue', () => {
     }).$mount()
 
     expect(vm).to.not.be.null
+  })
+
+  it('should render TrustedHtml if bodyOutputType.TrustedHtml', () => {
+    Vue.use(Install)
+
+    const Constructor = Vue.extend(Toast)
+    const vm = new Constructor({
+      propsData: {
+        toast: {
+          type: 'success',
+          body: '<b>bold text</b>',
+          bodyOutputType: BodyOutputType.TrustedHtml,
+          toastConfig: new ToastConfig()
+        }
+      }
+    }).$mount()
+
+    expect(vm.$el.querySelector('.vue-on-toast-message b').innerHTML)
+      .to.equal('bold text')
+  })
+
+  it('should not render TrustedHtml if bodyOutputType.TrustedHtml is false', () => {
+    Vue.use(Install)
+
+    const Constructor = Vue.extend(Toast)
+    const vm = new Constructor({
+      propsData: {
+        toast: {
+          type: 'success',
+          body: '<b>bold text</b>',
+          toastConfig: new ToastConfig()
+        }
+      }
+    }).$mount()
+
+    expect(vm.toast.bodyOutputType).to.be.undefined
+    expect(vm.$el.querySelector('.vue-on-toast-message b')).to.be.null
+    expect(vm.$el.querySelector('.vue-on-toast-message div').innerText)
+      .to.equal('<b>bold text</b>')
+  })
+
+  it('should render Component if bodyOutputType.Component', () => {
+    Vue.use(Install)
+
+    let comp = Vue.component('test-component', {
+      render: (h) => {
+        return h('div', 'component body')
+      }
+    })
+
+    const Constructor = Vue.extend(Toast)
+    const vm = new Constructor({
+      propsData: {
+        toast: {
+          type: 'success',
+          body: comp,
+          bodyOutputType: BodyOutputType.Component,
+          toastConfig: new ToastConfig()
+        }
+      }
+    }).$mount()
+
+    expect(vm.$el.querySelector('.vue-on-toast-message div').innerHTML)
+      .to.equal('component body')
+    expect(vm.$el.querySelector('.vue-on-toast-message div').outerHTML)
+      .to.equal('<div>component body</div>')
+  })
+
+  it('should throw error if attempting to render Component and bodyOutputType.Component is false', () => {
+    Vue.use(Install)
+
+    let comp = Vue.component('test-component', {
+      render: (h) => {
+        return h('div', 'component body')
+      }
+    })
+
+    const Constructor = Vue.extend(Toast)
+    const vm = new Constructor({
+      propsData: {
+        toast: {
+          type: 'success',
+          body: comp,
+          toastConfig: new ToastConfig()
+        }
+      }
+    }).$mount()
+
+    expect(vm.toast.bodyOutputType).to.be.undefined
+    expect(vm.$el.querySelector('.vue-on-toast-message div')).to.be.null
   })
 })
 

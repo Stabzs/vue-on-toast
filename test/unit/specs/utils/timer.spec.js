@@ -1,14 +1,14 @@
 import Constants from '@/utils/constants'
-import TimerHelpers from '@/utils/timerHelpers'
+import Timer from '@/utils/timer'
 import { ToastServiceBus } from '@/services/toastServiceBus'
 
-describe('timerHelpers.js', () => {
+describe('timer.js', () => {
   it('should set timeout to numeric value if passed numeric value', () => {
     let toast = { timeout: 1 }
 
     expect(toast.timeoutId).to.be.undefined
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
@@ -20,7 +20,7 @@ describe('timerHelpers.js', () => {
     expect(toast.timeout).to.be.undefined
     expect(toast.timeoutId).to.be.undefined
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
@@ -32,7 +32,7 @@ describe('timerHelpers.js', () => {
     expect(toast.timeout).to.be.function
     expect(toast.timeoutId).to.be.undefined
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
@@ -44,7 +44,7 @@ describe('timerHelpers.js', () => {
     expect(toast.timeout).to.be.string
     expect(toast.timeoutId).to.be.undefined
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
@@ -56,7 +56,7 @@ describe('timerHelpers.js', () => {
     expect(toast.timeout).to.be.undefined
     expect(toast.toastConfig.timeout).to.be.undefined
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.undefined
   })
@@ -69,7 +69,7 @@ describe('timerHelpers.js', () => {
       }
     }
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)
@@ -83,7 +83,7 @@ describe('timerHelpers.js', () => {
       }
     }
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.undefined
   })
@@ -97,7 +97,7 @@ describe('timerHelpers.js', () => {
       delete toast.timeoutId
     })
 
-    TimerHelpers.configureTimer(toast)
+    Timer.configureTimer(toast)
 
     expect(toast.timeoutId).to.be.defined
     expect(toast.timeoutId).to.be.above(0)

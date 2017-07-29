@@ -14,12 +14,10 @@ module.exports = {
   moduleName: 'VueOnToast',
   plugins: [
     replace({'process.env.NODE_ENV': '"development"'}), 
+    vue({compileTemplate: true}),
     flow(), 
     node(), 
     cjs(),
-    vue({compileTemplate: true}),
-    stylus({
-      output: 'toast.css'
-    })
+    buble()
   ]
 }

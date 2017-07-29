@@ -1,6 +1,6 @@
 <script>
 import { ToastServiceBus } from '../services/toastServiceBus'
-import TimerHelpers from '../utils/timerHelpers'
+import Timer from '../utils/timer'
 import ToastConfig from '../utils/toastConfig'
 import Constants from '../utils/constants'
 import Toast from './Toast.vue'
@@ -44,7 +44,7 @@ export default {
 
       toast.bodyOutputType = toast.bodyOutputType || toastConfig.bodyOutputType
 
-      TimerHelpers.configureTimer(toast)
+      Timer.configureTimer(toast)
 
       if (toastConfig.newestOnTop) {
         this.toasts.unshift(toast)
