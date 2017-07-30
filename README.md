@@ -14,10 +14,10 @@ A simple demo can be found at
 
 
 # Getting Started
-In keeping with Vue's progressive design philosophy, you can drop vue-on-toast onto an existing page or you can add it to a build system.  Choose one of the approaches below based on your needs.
+In keeping with Vue's progressive design philosophy, you can drop `vue-on-toast` onto an existing page or you can add it to a build system.  Choose one of the approaches below based on your needs.
 
 ## CDN Installation
-If you are using Vue in a new or existing application without a build system and you would like to use vue-on-toast, you can add it from CDN and it will install itself automatically.
+If you are using Vue in a new or existing application without a build system and you would like to use `vue-on-toast`, you can add it from CDN and it will install itself automatically.
 
 ```html
 <link href='https://unpkg.com/vue-on-toast/dist/vue-on-toast.min.css' rel="stylesheet" type="text/css">
@@ -29,16 +29,27 @@ If you are using Vue in a new or existing application without a build system and
 
 ## NPM Install
 ```bash
-npm install
+npm install vue-on-toast
 ```
 
-In the root of your application, import and install vue-on-toast.
+#### In the root of your application, import and install `vue-on-toast`.
 
-```javascript
+```JavaScript
 import Vue from 'vue'
 import VueOnToast from 'vue-on-toast'
  
 Vue.use(VueOnToast)
+```
+
+#### Import CSS or Stylus
+```scss
+@import 'node_modules/vue-on-toast/dist/vue-on-toast.styl'
+```
+
+or
+
+```css
+@import 'node_modules/vue-on-toast/dist/vue-on-toast.css'
 ```
 
 
