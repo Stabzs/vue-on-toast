@@ -1,4 +1,4 @@
-const v = 'vue-on-toast'
+const v = 'vot'
 const types = {
   success: 'success',
   error: 'error',
@@ -31,14 +31,14 @@ export default {
 
   // Toast style class names
   TITLE_CLASS: v + '-title',
-  MESSAGE_CLASS: v + '-message',
+  BODY_CLASS: v + '-body',
 
   // Container position style class names
   TOP_RIGHT_POSITION_CLASS: v + '-top-right',
   TOP_LEFT_POSITION_CLASS: v + '-top-left',
   TOP_FULL_WIDTH_POSITION_CLASS: v + '-top-full-width',
 
-  DEFAULT_CLOSE_HTML: '<button class="toast-close-button" type="button">&times;</button>',
+  CLOSE_HTML: '<button class="toast-close-button" type="button">&times;</button>',
 
   // Animation types
   animations: {

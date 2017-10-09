@@ -2,7 +2,9 @@ import Constants from './constants'
 
 export default function(toastConfig) {
   const toastConfigDefaults = {
-    closeHtml: Constants.DEFAULT_CLOSE_HTML,
+    animation: Constants.animations.FADE,
+    bodyClass: Constants.BODY_CLASS,
+    closeHtml: Constants.CLOSE_HTML,
     defaultTypeClass: Constants.INFO_TYPE_CLASS,
     typeClasses: {
       error: Constants.ERROR_TYPE_CLASS,
@@ -18,17 +20,15 @@ export default function(toastConfig) {
       success: Constants.SUCCESS_ICON_CLASS,
       warning: Constants.WARNING_ICON_CLASS
     },
-    messageClass: Constants.MESSAGE_CLASS,
     mouseoverTimerStop: false,
     newestOnTop: true,
     positionClass: Constants.TOP_RIGHT_POSITION_CLASS,
     preventDuplicates: false,
     tapToDismiss: true,
-    timeout: 0,
+    timeout: 5000,
     titleClass: Constants.TITLE_CLASS,
     toastContainerId: null,
-    showCloseButton: false,
-    animation: Constants.animations.FADE
+    showCloseButton: false
   }
 
   toastConfig = Object.assign(toastConfigDefaults, toastConfig)

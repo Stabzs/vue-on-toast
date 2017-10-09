@@ -84,7 +84,7 @@ export default {
 
     removeToast(toast) {
       if (toast === null || typeof toast === 'undefined') return
-      var index = this.toasts.findIndex(t => t.toastId === toast.toastId)
+      var index = this.toasts.indexOf(toast)
       if (index < 0) { return }
 
       this.toasts.splice(index, 1)
@@ -159,7 +159,7 @@ export default {
 </script>
 
 <<style lang="stylus">
-$v = '.vue-on-toast'
+$v = '.vot'
 
 .toast-container
   position fixed
@@ -244,49 +244,50 @@ $v = '.vue-on-toast'
 {$v}-center
   top 45%
 
-.ease-out-right-enter
-  opacity 0
-  transform translateX(200%)
+.toast-container
+  .ease-out-right-enter
+    opacity 0
+    transform translateX(200%)
 
-.ease-out-right-enter-to
-  transition all 0.5s
-  transform translateX(0%)
+  .ease-out-right-enter-to
+    transition all 0.5s
+    transform translateX(0%)
 
-.ease-out-right-leave-to
-  opacity 0
-  transition all 0.5s
-  transform translateX(100%)
+  .ease-out-right-leave-to
+    opacity 0
+    transition all 0.5s
+    transform translateX(100%)
 
-.ease-out-left-enter
-  opacity 0
-  transform translateX(-200%)
+  .ease-out-left-enter
+    opacity 0
+    transform translateX(-200%)
 
-.ease-out-left-enter-to
-  transition all 0.5s
-  transform translateX(0%)
+  .ease-out-left-enter-to
+    transition all 0.5s
+    transform translateX(0%)
 
-.ease-out-left-leave-to
-  opacity 0
-  transition all 0.5s
-  transform translateX(-100%)
+  .ease-out-left-leave-to
+    opacity 0
+    transition all 0.5s
+    transform translateX(-100%)
 
-.ease-out-right-leave-active, .ease-out-left-leave-active
-  position absolute
+  .ease-out-right-leave-active, .ease-out-left-leave-active
+    position absolute
 
-.ease-out-right-move, .ease-out-left-move
-  transition all 0.5s
+  .ease-out-right-move, .ease-out-left-move
+    transition all 0.5s
 
-.fade-enter-active, .fade-leave-active
-  transition all 0.5s linear
+  .fade-enter-active, .fade-leave-active
+    transition all 0.5s linear
 
-.fade-leave-active
-  position absolute
+  .fade-leave-active
+    position absolute
 
-.fade-enter, .fade-leave-to
-  opacity 0
-  transform translateX(0px)
+  .fade-enter, .fade-leave-to
+    opacity 0
+    transform translateX(0px)
 
-.fade-move
-  transition all 0.5s
+  .fade-move
+    transition all 0.5s
 
 </style>

@@ -33,7 +33,7 @@ describe('Toast.vue', () => {
       }
     }).$mount()
 
-    expect(vm.$el.querySelector('.vue-on-toast-message b').innerHTML)
+    expect(vm.$el.querySelector('.vot-body b').innerHTML)
       .to.equal('bold text')
   })
 
@@ -52,8 +52,8 @@ describe('Toast.vue', () => {
     }).$mount()
 
     expect(vm.toast.bodyOutputType).to.be.undefined
-    expect(vm.$el.querySelector('.vue-on-toast-message b')).to.be.null
-    expect(vm.$el.querySelector('.vue-on-toast-message div').innerText)
+    expect(vm.$el.querySelector('.vot-body b')).to.be.null
+    expect(vm.$el.querySelector('.vot-body div').innerText)
       .to.equal('<b>bold text</b>')
   })
 
@@ -78,9 +78,9 @@ describe('Toast.vue', () => {
       }
     }).$mount()
 
-    expect(vm.$el.querySelector('.vue-on-toast-message div').innerHTML)
+    expect(vm.$el.querySelector('.vot-body div').innerHTML)
       .to.equal('component body')
-    expect(vm.$el.querySelector('.vue-on-toast-message div').outerHTML)
+    expect(vm.$el.querySelector('.vot-body div').outerHTML)
       .to.equal('<div>component body</div>')
   })
 
@@ -105,7 +105,7 @@ describe('Toast.vue', () => {
     }).$mount()
 
     expect(vm.toast.bodyOutputType).to.be.undefined
-    expect(vm.$el.querySelector('.vue-on-toast-message div')).to.be.null
+    expect(vm.$el.querySelector('.vot-body div')).to.be.null
   })
 })
 
