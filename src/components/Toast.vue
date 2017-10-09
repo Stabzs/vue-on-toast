@@ -4,7 +4,7 @@
     <i class="toaster-icon" v-bind:class="classes.iconClass"></i>
     <div class="toast-content">
       <div v-bind:class="classes.titleClass">{{toast.title}}</div>
-      <div v-bind:class="classes.messageClass">
+      <div v-bind:class="classes.bodyClass">
         <component v-if="toast.bodyOutputType == bodyOutputType.Component" :is="toast.body"></component>
         <div v-else-if="toast.bodyOutputType == bodyOutputType.TrustedHtml" v-html="toast.body"></div>
         <div v-else-if="typeof toast.body === 'string'">{{toast.body}}</div>
@@ -34,7 +34,7 @@ export default {
         typeClass: this.toast.toastConfig.typeClasses[this.toast.type],
         iconClass: this.toast.toastConfig.iconClasses[this.toast.type],
         titleClass: this.toast.toastConfig.titleClass,
-        messageClass: this.toast.toastConfig.messageClass
+        bodyClass: this.toast.toastConfig.bodyClass
       }
     },
     bodyOutputType() {
@@ -92,7 +92,7 @@ export default {
 </script>
 
 <<style lang="stylus">
-$v = '.vue-on-toast'
+$v = '.vot'
 
 .toast
   display -webkit-flex
@@ -200,6 +200,4 @@ $icon-base
 
 {$v}-warning
   background-color #f89406
-
-
 </style>

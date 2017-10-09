@@ -2,6 +2,6 @@ import {
   install
 } from './install'
 
-export default {
-  install
-}
+import ToastService from './services/toastService'
+
+export default { install, ToastService }
