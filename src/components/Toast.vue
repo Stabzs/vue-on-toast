@@ -18,7 +18,7 @@
 
 
 <script>
-import Constants from '../utils/constants'
+import { REMOVE_TOAST } from '../utils/constants'
 import BodyOutputType from '../utils/bodyOutputType'
 import { ToastServiceBus } from '../services/toastServiceBus'
 import Timer from '../utils/timer'
@@ -59,7 +59,7 @@ export default {
         }
 
         if (removeToast) {
-          ToastServiceBus.$emit(Constants.REMOVE_TOAST, toast.toastId,
+          ToastServiceBus.$emit(REMOVE_TOAST, toast.toastId,
             toast.toastContainerId)
         }
       }
@@ -80,7 +80,7 @@ export default {
           Timer.configureTimer(toast)
         }
       } else if (toast.timeoutId === null) {
-        ToastServiceBus.$emit(Constants.REMOVE_TOAST,
+        ToastServiceBus.$emit(REMOVE_TOAST,
           toast.toastId,
           toast.toastContainerId
         )

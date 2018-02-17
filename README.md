@@ -2,13 +2,13 @@
 
 **vue-on-toast** An SSR-enabled, flexible, fully featured, bootstrap-themed toast notification library for Vue.
 
-[![npm](https://img.shields.io/npm/v/vue-on-toast.svg?maxAge=3600?cachebust=true)](https://www.npmjs.com/package/vue-on-toast)
-[![npm](https://img.shields.io/npm/dt/vue-on-toast.svg?cachebust=true)](https://www.npmjs.com/package/vue-on-toast)
+[![npm](https://img.shields.io/npm/v/vue-on-toast.svg?maxAge=3600?cachebusted=true)](https://www.npmjs.com/package/vue-on-toast)
+[![npm](https://img.shields.io/npm/dt/vue-on-toast.svg?cachebusted=true)](https://www.npmjs.com/package/vue-on-toast)
 [![Build Status](https://travis-ci.org/Stabzs/vue-on-toast.svg?branch=master)](https://travis-ci.org/Stabzs/vue-on-toast)
 [![Coverage Status](https://coveralls.io/repos/github/Stabzs/vue-on-toast/badge.svg?branch=master)](https://coveralls.io/github/Stabzs/vue-on-toast?branch=master)
 [![codebeat badge](https://codebeat.co/badges/619edc1b-d609-4866-b228-998537ccb0fd)](https://codebeat.co/projects/github-com-stabzs-vue-on-toast-master)
 
-`vue-on-toast` focuses on performance and size with the JavaScript weighing in at 6.87kb (2.43kb gzipped) and the CSS at 10.41kb.
+`vue-on-toast` focuses on performance and size with the JavaScript weighing in at 6.37kb (2.25kb gzipped) and the CSS at 10.37kb.
 
 # Demo
 A simple demo can be found at 

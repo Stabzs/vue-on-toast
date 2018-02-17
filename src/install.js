@@ -1,6 +1,5 @@
 import ToastContainer from './components/ToastContainer.vue'
 import ToastService from './services/toastService'
-import Constants from './utils/constants'
 import {
   installBus
 } from './services/toastServiceBus'
@@ -16,14 +15,13 @@ export function install(Vue) {
 
   _Vue = Vue
 
-  installBus()
+  installBus(_Vue)
 
   Vue.component('ToastContainer', ToastContainer)
 
   Vue.prototype.$vueOnToast = {
     pop: ToastService.pop,
-    remove: ToastService.remove,
-    Constants
+    remove: ToastService.remove
   }
 }
 

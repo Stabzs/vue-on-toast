@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Install from '@/index'
 import Toast from '@/components/Toast'
-import Constants from '@/utils/constants'
+import * as Constants from '@/utils/constants'
 import ToastConfig from '@/utils/toastConfig'
 import BodyOutputType from '@/utils/bodyOutputType'
 import { ToastServiceBus } from '@/services/toastServiceBus'
