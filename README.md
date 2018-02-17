@@ -8,7 +8,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Stabzs/vue-on-toast/badge.svg?branch=master)](https://coveralls.io/github/Stabzs/vue-on-toast?branch=master)
 [![codebeat badge](https://codebeat.co/badges/619edc1b-d609-4866-b228-998537ccb0fd)](https://codebeat.co/projects/github-com-stabzs-vue-on-toast-master)
 
-`vue-on-toast` focuses on performance and size with the JavaScript weighing in at 6.22kb (2.25kb gzipped) and the CSS at 10.12kb.
+`vue-on-toast` focuses on performance and size with the JavaScript weighing in at 6.37kb (2.25kb gzipped) and the CSS at 10.37kb.
 
 # Demo
 A simple demo can be found at 
