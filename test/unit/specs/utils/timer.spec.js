@@ -1,4 +1,4 @@
-import Constants from '@/utils/constants'
+import * as Constants from '@/utils/constants'
 import Timer from '@/utils/timer'
 import { ToastServiceBus } from '@/services/toastServiceBus'
 

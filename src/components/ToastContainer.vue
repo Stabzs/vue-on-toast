@@ -2,7 +2,7 @@
 import { ToastServiceBus } from '../services/toastServiceBus'
 import Timer from '../utils/timer'
 import ToastConfig from '../utils/toastConfig'
-import Constants from '../utils/constants'
+import { ADD_TOAST, REMOVE_TOAST } from '../utils/constants'
 import Toast from './Toast.vue'
 
 export default {
@@ -127,11 +127,11 @@ export default {
   created() {
     ToastServiceBus.subscribers.push(this)
 
-    ToastServiceBus.$on(Constants.ADD_TOAST, (toast) => {
+    ToastServiceBus.$on(ADD_TOAST, (toast) => {
       this.addToast(toast, this._toastConfig)
     })
 
-    ToastServiceBus.$on(Constants.REMOVE_TOAST,
+    ToastServiceBus.$on(REMOVE_TOAST,
       (toastId, toastContainerId) => {
         this.removeToasts(toastId, toastContainerId)
       })

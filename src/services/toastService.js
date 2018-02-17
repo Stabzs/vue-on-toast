@@ -1,7 +1,7 @@
 import {
   ToastServiceBus
 } from './toastServiceBus'
-import Constants from '../utils/constants'
+import { ADD_TOAST, REMOVE_TOAST } from '../utils/constants'
 
 export default {
   /**
@@ -31,7 +31,7 @@ export default {
 
     toast.toastId = Guid.newGuid()
 
-    ToastServiceBus.$emit(Constants.ADD_TOAST, toast)
+    ToastServiceBus.$emit(ADD_TOAST, toast)
 
     return toast
   },
@@ -44,7 +44,7 @@ export default {
    *        The toastContainerId of the container to remove toasts from.
    */
   remove(toastId, toastContainerId) {
-    ToastServiceBus.$emit(Constants.REMOVE_TOAST, toastId, toastContainerId)
+    ToastServiceBus.$emit(REMOVE_TOAST, toastId, toastContainerId)
   }
 }
 

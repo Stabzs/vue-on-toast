@@ -1,6 +1,6 @@
 import ToastService from '@/services/toastService'
 import { ToastServiceBus } from '@/services/toastServiceBus'
-import Constants from '@/utils/constants'
+import * as Constants from '@/utils/constants'
 
 describe('toastService.js pop', () => {
   beforeEach(() => {

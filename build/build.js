@@ -48,7 +48,7 @@ build([
   }
 ].map(genConfig))
 
-function build(builds) {
+function build (builds) {
   let built = 0
   const total = builds.length
   const next = () => {
@@ -63,20 +63,22 @@ function build(builds) {
   next()
 }
 
-function genConfig(opts) {
+function genConfig (opts) {
   const config = {
-    entry: resolve('src/index.js'),
-    dest: opts.dest,
-    format: opts.format,
-    banner,
-    moduleName: 'VueOnToast',
+    input: resolve('src/index.js'),
+    output: {
+      name: 'VueOnToast',
+      banner: banner,
+      format: opts.format,
+      file: opts.dest
+    },
     plugins: [
       flow(),
       vue({
         compileTemplate: true,
-        css(styles, stylesNodes) {
+        css (styles, stylesNodes) {
           write('dist/vue-on-toast.styl', styles)
-          stylus.render(styles, function(err, css) {
+          stylus.render(styles, function (err, css) {
             if (err) throw err
             write('dist/vue-on-toast.css', css)
             write('dist/vue-on-toast.min.css', new CleanCSS().minify(css).styles)
@@ -101,29 +103,29 @@ function genConfig(opts) {
   return config
 }
 
-function buildEntry(config) {
-  const isProd = /min\.js$/.test(config.dest)
-  return rollup.rollup(config).then(bundle => {
-    const code = bundle.generate(config).code
-    if (isProd) {
-      var minified = (config.banner ? config.banner + '\n' : '') + uglify.minify(code, {
-        output: {
-          ascii_only: true
-        },
-        compress: {
-          pure_funcs: ['makeMap']
-        }
-      }).code
-      return write(config.dest, minified, true)
-    } else {
-      return write(config.dest, code)
-    }
-  })
+async function buildEntry (config) {
+  const isProd = /min\.js$/.test(config.output.file)
+  const bundle = await rollup.rollup(config)
+  const { code, map } = await bundle.generate(config)
+
+  if (isProd) {
+    var minified = (config.output.banner ? config.output.banner + '\n' : '') + uglify.minify(code, {
+      output: {
+        ascii_only: true
+      },
+      compress: {
+        pure_funcs: ['makeMap']
+      }
+    }).code
+    return write(config.output.file, minified, true)
+  } else {
+    return write(config.output.file, code)
+  }
 }
 
-function write(dest, code, zip) {
+function write (dest, code, zip) {
   return new Promise((resolve, reject) => {
-    function report(extra) {
+    function report (extra) {
       console.log(blue(path.relative(process.cwd(), dest)) + ' ' + getSize(code) + (extra || ''))
       resolve()
     }
@@ -142,14 +144,14 @@ function write(dest, code, zip) {
   })
 }
 
-function getSize(code) {
+function getSize (code) {
   return (code.length / 1024).toFixed(2) + 'kb'
 }
 
-function logError(e) {
+function logError (e) {
   console.log(e)
 }
 
-function blue(str) {
+function blue (str) {
   return '\x1b[1m\x1b[34m' + str + '\x1b[39m\x1b[22m'
 }

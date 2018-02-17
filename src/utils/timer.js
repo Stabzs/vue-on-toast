@@ -1,7 +1,9 @@
 import {
   ToastServiceBus
 } from '../services/toastServiceBus'
-import Constants from './constants'
+import {
+  REMOVE_TOAST
+} from './constants'
 
 export default {
   configureTimer(toast) {
@@ -15,7 +17,7 @@ export default {
 
     if (timeout > 0) {
       toast.timeoutId = setTimeout(() => {
-        ToastServiceBus.$emit(Constants.REMOVE_TOAST,
+        ToastServiceBus.$emit(REMOVE_TOAST,
           toast.toastId, toast.toastContainerId)
       }, timeout)
     }
