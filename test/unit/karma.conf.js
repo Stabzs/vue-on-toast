@@ -17,8 +17,8 @@ module.exports = function(config) {
     // 1. install corresponding karma launcher
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
-    bowsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
+    bowsers: ['HeadlessChrome'],
+    frameworks: ['mocha', 'sinon-chai'],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
@@ -28,7 +28,7 @@ module.exports = function(config) {
     webpackMiddleware: {
       noInfo: false
     },
-    //autoWatch: true,
+    // autoWatch: true,
     coverageReporter: {
       dir: './coverage',
       reporters: [
@@ -39,6 +39,10 @@ module.exports = function(config) {
     customLaunchers: {
       ChromeTravisCi: {
         base: 'Chrome',
+        flags: ['--no-sandbox']
+      },
+      HeadlessChrome: {
+        base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
     },
