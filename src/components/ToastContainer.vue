@@ -124,7 +124,7 @@ export default {
     }
   },
 
-  created() {
+  beforeMount() {
     ToastServiceBus.subscribers.push(this)
 
     ToastServiceBus.$on(ADD_TOAST, (toast) => {
