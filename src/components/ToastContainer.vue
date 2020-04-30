@@ -2,7 +2,7 @@
 import { ToastServiceBus } from '../services/toastServiceBus'
 import Timer from '../utils/timer'
 import ToastConfig from '../utils/toastConfig'
-import { ADD_TOAST, REMOVE_TOAST } from '../utils/constants'
+import { ADD_TOAST, REMOVE_TOAST, REMOVE_TOAST_BY_TYPE } from '../utils/constants'
 import Toast from './Toast.vue'
 
 export default {
@@ -111,9 +111,15 @@ export default {
       }
     },
 
-    removeAllToasts() {
-      for (let i = this.toasts.length - 1; i >= 0; i--) {
-        this.removeToast(this.toasts[i])
+    removeAllToasts(type = 'all') {
+      if (type === 'all') {
+        for (let i = this.toasts.length - 1; i >= 0; i--) {
+          this.removeToast(this.toasts[i])
+        }
+      } else {
+        this.toasts
+          .filter(toast => toast.type === type)
+          .forEach(toast => this.removeToast(toast))
       }
     }
   },
@@ -134,6 +140,11 @@ export default {
     ToastServiceBus.$on(REMOVE_TOAST,
       (toastId, toastContainerId) => {
         this.removeToasts(toastId, toastContainerId)
+      })
+
+    ToastServiceBus.$on(REMOVE_TOAST_BY_TYPE,
+      (type) => {
+        this.removeAllToasts(type)
       })
   },
 

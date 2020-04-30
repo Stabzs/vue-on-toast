@@ -1,7 +1,7 @@
 import {
   ToastServiceBus
 } from './toastServiceBus'
-import { ADD_TOAST, REMOVE_TOAST } from '../utils/constants'
+import { ADD_TOAST, REMOVE_TOAST, REMOVE_TOAST_BY_TYPE } from '../utils/constants'
 
 export default {
   /**
@@ -45,6 +45,15 @@ export default {
    */
   remove(toastId, toastContainerId) {
     ToastServiceBus.$emit(REMOVE_TOAST, toastId, toastContainerId)
+  },
+
+  /**
+   * Removes all toasts by type
+   *
+   * @param {string} type The toast type to remove.
+   */
+  removeByType(type) {
+    ToastServiceBus.$emit(REMOVE_TOAST_BY_TYPE, type)
   }
 }
 
