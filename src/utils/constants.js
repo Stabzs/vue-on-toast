@@ -12,6 +12,7 @@ export const types = {
 // Events
 export const ADD_TOAST = 'addToast'
 export const REMOVE_TOAST = 'removeToast'
+export const REMOVE_TOAST_BY_TYPE = 'removeToastByType'
 
 // Toast Type style class names
 export const SUCCESS_TYPE_CLASS = v + '-' + types.success
